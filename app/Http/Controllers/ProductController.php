@@ -35,15 +35,9 @@ class ProductController extends Controller
         return Product::create($request->all());
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        return Product::find($id);
     }
 
     /**
