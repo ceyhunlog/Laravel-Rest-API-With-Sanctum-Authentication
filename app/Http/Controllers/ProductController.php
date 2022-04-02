@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 use App\Models\Product;
 
-
 class ProductController extends Controller
 {
     public function index()
@@ -51,26 +50,23 @@ class ProductController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        return Product::find($id)->update($request->all());
+    }
+
+    public function destroy($id)
+    {
+        return Product::destroy($id);
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Search for a name
+     * 
+     * @param string $name
      */
-    public function destroy($id)
+    public function search($name)
     {
-        //
+        return Product::where('name', 'like', '%' . $name . '%')->get();
     }
 }
